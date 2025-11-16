@@ -8,4 +8,8 @@ public SqList(){
     length=0;
 
 }
+
+}
+public static void main(String[] args){
+    SqList<Integer> list=new SqList<>();
 }
