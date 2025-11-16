@@ -1,70 +1,149 @@
 public class CircularLinkList {
-    //普通单链表
-int data;
-CircularLinkList node;
 
-public CircularLinkList(){
-    this.data=0;
-    this.node=null;
-}
-public void add(int data){
-    CircularLinkList node = new CircularLinkList();
-    node.data=data;
-    node.node=this;
-}
-public void delete(int data){
-    CircularLinkList node = this;
-    while(node.node!=null){
-        if(node.node.data==data){
-            node.node=node.node.node;
+    private static class Node {
+        int data;
+        Node next;
+
+        Node(int data) {
+            this.data = data;
+        }
+    }
+
+    private Node tail; // 指向尾节点，tail.next 即为头节点
+    private int size;
+
+    public boolean isEmpty() {
+        return size == 0;
+    }
+
+    public int size() {
+        return size;
+    }
+
+    public void add(int data) {
+        Node node = new Node(data);
+        if (tail == null) {
+            tail = node;
+            node.next = node;
+        } else {
+            node.next = tail.next;
+            tail.next = node;
+            tail = node;
+        }
+        size++;
+    }
+
+    public boolean delete(int data) {
+        if (tail == null) {
+            System.out.println("链表为空，无法删除");
+            return false;
+        }
+
+        Node prev = tail;
+        Node curr = tail.next;
+        for (int i = 0; i < size; i++) {
+            if (curr.data == data) {
+                if (size == 1) {
+                    tail = null;
+                } else {
+                    prev.next = curr.next;
+                    if (curr == tail) {
+                        tail = prev;
+                    }
+                }
+                size--;
+                System.out.println("已删除节点: " + data);
+                return true;
+            }
+            prev = curr;
+            curr = curr.next;
+        }
+        System.out.println("未找到该节点");
+        return false;
+    }
+
+    public boolean change(int oldData, int newData) {
+        if (tail == null) {
+            System.out.println("链表为空，无法修改");
+            return false;
+        }
+
+        Node curr = tail.next;
+        for (int i = 0; i < size; i++) {
+            if (curr.data == oldData) {
+                curr.data = newData;
+                System.out.println("已将节点 " + oldData + " 修改为 " + newData);
+                return true;
+            }
+            curr = curr.next;
+        }
+        System.out.println("未找到需要修改的节点");
+        return false;
+    }
+
+    public boolean find(int data) {
+        if (tail == null) {
+            System.out.println("链表为空");
+            return false;
+        }
+
+        Node curr = tail.next;
+        for (int i = 0; i < size; i++) {
+            if (curr.data == data) {
+                System.out.println("找到该节点: " + data);
+                return true;
+            }
+            curr = curr.next;
+        }
+        System.out.println("未找到该节点");
+        return false;
+    }
+
+    public void show() {
+        if (tail == null) {
+            System.out.println("链表为空");
             return;
         }
-        node=node.node;
-    }
-    System.out.println("未找到该节点");
-}
-public void change(int data){
-    CircularLinkList node = this;
-    while(node.node!=null){
-        if(node.node.data==data){
-            node.node.data=data;
-            return;
+        Node curr = tail.next;
+        for (int i = 0; i < size; i++) {
+            System.out.print(curr.data);
+            if (i < size - 1) {
+                System.out.print(" -> ");
+            }
+            curr = curr.next;
         }
-        node=node.node;
+        System.out.println(" -> (回到头节点)");
     }
-    System.out.println("未找到该节点");
-}
-public void find(int data){
-    CircularLinkList node = this;
-    while(node.node!=null){
-        if(node.node.data==data){
-            System.out.println("找到该节点");
-            return;
-        }
-        node=node.node;
+
+    public static void main(String[] args) {
+        CircularLinkList list = new CircularLinkList();
+
+        System.out.println("初始化链表：");
+        list.show();
+
+        list.add(10);
+        list.add(20);
+        list.add(30);
+        list.add(40);
+        System.out.println("添加节点后：");
+        list.show();
+
+        list.delete(20);
+        list.delete(50);
+        System.out.println("删除操作后：");
+        list.show();
+
+        list.change(30, 35);
+        list.change(100, 200);
+        System.out.println("修改操作后：");
+        list.show();
+
+        list.find(35);
+        list.find(100);
+
+        list.add(50);
+        System.out.println("再次添加节点后：");
+        list.show();
     }
-    System.out.println("未找到该节点");
-}
-public void show(){
-    CircularLinkList node = this.node;
-    if(node==null){
-        System.out.println("链表为空");
-        return;
-    }
-    while(node!=null){
-        System.out.print(node.data+" ");
-        node=node.node;
-    }
-    System.out.println();
-}
-public static void main(String[] args){
-    CircularLinkList circularLinkList = new CircularLinkList();
-    circularLinkList.add(1);
-    circularLinkList.add(2);
-    circularLinkList.add(3);
-    circularLinkList.add(4);
-    circularLinkList.add(5);
-    circularLinkList.show();
-}
 }
 
