@@ -38,9 +38,35 @@ public class SqList <T> {
         if(i<1||i>length){
             return false;
         }
+        for(int j=0;j<=length;j++){
+            if(data[j]==i){
+                System.out.println("找到元素是"+data[j]);
+                return true;
+            }
+
+        }
+        System.out.println("未找到元素");
+        return false;
 
     }
-    
+    public void showall(){
+        for(int j=0;j<=length;j++){
+            System.out.println(data[j]);
+        }
+
+
+    }
+
+    public static void main(String[] args){
+        SqList sqList = new SqList();
+        sqList.insert(1,1);
+        sqList.insert(2,2);
+        sqList.insert(3,3);
+        sqList.insert(4,4);
+        sqList.insert(5,5);
+        sqList.showall();
+        sqList.delete(2);
+        sqList.showall();
+        sqList.find(2);
+    }
 }
-
-

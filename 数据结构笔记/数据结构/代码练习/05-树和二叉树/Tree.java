@@ -15,55 +15,35 @@
  */
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
-import java.util.LinkedList;
-
-// 一般树节点类
-class TreeNode {
-    int data;                           // 数据域：存储节点数据
-    List<TreeNode> children;           // 子节点列表：存储所有子节点
-    
-    /**
-     * 构造函数：创建节点
-     * 
-     * @param data 节点存储的数据
-     */
-    TreeNode(int data) {
-        this.data = data;
-        this.children = new ArrayList<>();
-    }
-    
-    /**
-     * 添加子节点
-     * 
-     * @param child 子节点
-     */
-    void addChild(TreeNode child) {
-        children.add(child);
-    }
-    
-    /**
-     * 获取节点的度（子节点个数）
-     * 
-     * @return 节点的度
-     */
-    int getDegree() {
-        return children.size();
-    }
-    
-    /**
-     * 判断是否为叶子节点
-     * 
-     * @return true表示是叶子节点，false表示不是
-     */
-    boolean isLeaf() {
-        return children.isEmpty();
-    }
-}
 
 // 一般树类
 public class Tree {
+    // 嵌套定义节点，避免与其它文件中的 TreeNode 冲突
+    public static class TreeNode {
+        int data;                           // 数据域：存储节点数据
+        List<TreeNode> children;           // 子节点列表：存储所有子节点
+
+        TreeNode(int data) {
+            this.data = data;
+            this.children = new ArrayList<>();
+        }
+
+        void addChild(TreeNode child) {
+            children.add(child);
+        }
+
+        int getDegree() {
+            return children.size();
+        }
+
+        boolean isLeaf() {
+            return children.isEmpty();
+        }
+    }
+
     private TreeNode root;  // 根节点
     
     /**
