@@ -23,6 +23,23 @@ public class SqList <T> {
         length++;
         return true;
     }
+    public boolean delete(int i){
+        if(i<1||i>length){
+            return false;
+        }
+        int x =data[i-1];
+        for(int j=i; j<length; j++){
+            data[j-1] = data[j];
+        }
+        length--;
+        return true;
+    }
+    public boolean find(int i){
+        if(i<1||i>length){
+            return false;
+        }
+
+    }
     
 }
 
