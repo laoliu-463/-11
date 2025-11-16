@@ -4,7 +4,7 @@ public class SqList <T>{
     int length;//顺序表长度
 public SqList(){
     //构造函数用于初始化
-    data[]=new int[maxnumber];
+    data=new int[maxnumber];
     length=0;
 
 }
