@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/数据结构笔记/数据结构/代码练习/01-顺序表" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/数据结构笔记/数据结构/代码练习/02-链表" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/数据结构笔记/数据结构/代码练习/03-栈和队列" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/数据结构笔记/数据结构/代码练习/04-串" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/数据结构笔记/数据结构/代码练习/05-树和二叉树" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/数据结构笔记/数据结构/代码练习/06-图" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/数据结构笔记/数据结构/代码练习/07-查找" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/数据结构笔记/数据结构/代码练习/08-排序" isTestSource="false" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>
