@@ -45,6 +45,17 @@ public void find(int data){
     }
     System.out.println("未找到该节点");
 }
+public void show(){
+    CircularLinkList node = this.node;
+    if(node==null){
+        System.out.println("链表为空");
+        return;
+    }
+    while(node!=null){
+        System.out.print(node.data+" ");
+        node=node.node;
+    }
+    System.out.println();
 }
 public static void main(String[] args){
     CircularLinkList circularLinkList = new CircularLinkList();
@@ -55,3 +66,5 @@ public static void main(String[] args){
     circularLinkList.add(5);
     circularLinkList.show();
 }
+}
+
