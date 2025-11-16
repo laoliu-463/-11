@@ -13,14 +13,15 @@ public class SqList <T> {
         if(i<1||i>length+1){
             return false;
         }
-        if(length>maxnumber){
+        if(length>=maxnumber){
             return false;
         }
-        for(int j=length,j>=length-1,j--){
-
+        for(int j=length-1; j>=i-1; j--){
+            data[j+1] = data[j];
         }
-
-        return false;
+        data[i-1] = (int)x;
+        length++;
+        return true;
     }
 }
 
