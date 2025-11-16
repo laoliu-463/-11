@@ -23,6 +23,7 @@ public class SqList <T> {
         length++;
         return true;
     }
+    
 }
 
 
