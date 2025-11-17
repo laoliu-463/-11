@@ -1,7 +1,5 @@
 package com.wei.Christmas;
 import java.awt.*;
-import java.util.Timer;
-import java.util.TimerTask;
 import javax.swing.*;
 
 public class merryChristmas extends JFrame{
