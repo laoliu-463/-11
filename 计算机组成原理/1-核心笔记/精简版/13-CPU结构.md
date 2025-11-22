@@ -13,55 +13,55 @@
 classDiagram
     %% 定义 CPU 整体
     class CPU {
-        +run()
+        +运行()
     }
 
     %% 定义大脑：控制器
-    class ControlUnit {
-        +PC : ProgramCounter
-        +IR : InstructionRegister
-        +Decoder : Circuit
-        +fetch() : 取指
-        +decode() : 译码
-        +issueSignals() : 发送控制信号
+    class 控制器 {
+        +PC : 程序计数器
+        +IR : 指令寄存器
+        +译码器 : 电路
+        +取指() : 从内存读取指令
+        +译码() : 解析指令
+        +发送控制信号() : 控制数据通路
     }
 
     %% 定义肢体：数据通路
-    class Datapath {
-        +ALU : ArithmeticLogicUnit
-        +Registers : RegisterFile
-        +Buses : Interconnect
-        +performOperation() : 执行运算
-        +moveData() : 搬运数据
+    class 数据通路 {
+        +ALU : 运算器
+        +寄存器组 : 寄存器堆
+        +总线 : 互连线路
+        +执行运算() : 计算
+        +搬运数据() : 传输
     }
 
     %% 定义运算单元
     class ALU {
-        +InputA
-        +InputB
-        +Output
-        +ZeroFlag
-        +add()
-        +sub()
-        +and()
+        +输入A
+        +输入B
+        +输出
+        +零标志
+        +加法()
+        +减法()
+        +与运算()
     }
 
     %% 定义寄存器堆
-    class RegisterFile {
-        +R0_to_R31 : Word
-        +read(regID)
-        +write(regID, value)
+    class 寄存器堆 {
+        +R0到R31 : 字
+        +读取(寄存器ID)
+        +写入(寄存器ID, 值)
     }
 
     %% 关系描述
-    CPU *-- ControlUnit : 包含 (大脑)
-    CPU *-- Datapath : 包含 (肢体)
+    CPU *-- 控制器 : 包含 (大脑)
+    CPU *-- 数据通路 : 包含 (肢体)
     
-    ControlUnit --> Datapath : 控制 (Control Signals)
-    Datapath --> ControlUnit : 反馈 (Status Flags)
+    控制器 --> 数据通路 : 控制信号
+    数据通路 --> 控制器 : 状态标志反馈
     
-    Datapath *-- ALU : 包含
-    Datapath *-- RegisterFile : 包含
+    数据通路 *-- ALU : 包含
+    数据通路 *-- 寄存器堆 : 包含
 ```
 
 ### 1. 控制器 (Control Unit) —— 大脑

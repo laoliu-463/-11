@@ -12,55 +12,55 @@ Cache 不是一个简单的数组，它是一个精心设计的**多维结构**�
 
 ```mermaid
 classDiagram
-    class CacheSystem {
-        +HitRate : float
-        +AccessTime : ns
-        +read(address)
-        +write(address, data)
+    class Cache系统 {
+        +命中率 : 浮点数
+        +访问时间 : 纳秒
+        +读取(地址)
+        +写入(地址, 数据)
     }
 
-    class CacheSet {
-        +SetIndex : int
-        +ReplacementPolicy : LRU/Random
-        +findLine(tag)
+    class Cache组 {
+        +组索引 : 整数
+        +替换策略 : LRU或随机
+        +查找行(标记)
     }
 
-    class CacheLine {
-        +ValidBit : bool
-        +DirtyBit : bool
-        +Tag : int
-        +DataBlock : byte[]
-        +match(tag)
+    class Cache行 {
+        +有效位 : 布尔
+        +脏位 : 布尔
+        +标记 : 整数
+        +数据块 : 字节数组
+        +匹配(标记)
     }
 
-    class Address {
-        +Tag : int
-        +Index : int
-        +Offset : int
+    class 地址 {
+        +标记 : 整数
+        +索引 : 整数
+        +偏移 : 整数
     }
 
-    CacheSystem "1" *-- "N" CacheSet : Contains (Sets)
-    CacheSet "1" *-- "K" CacheLine : Contains (Ways)
+    Cache系统 "1" *-- "N" Cache组 : 包含(多个组)
+    Cache组 "1" *-- "K" Cache行 : 包含(K路)
     
-    note for CacheSet "K = 1: 直接映射\nK = N: 全相联\n1 < K < N: 组相联"
+    note for Cache组 "K = 1: 直接映射\nK = N: 全相联\n1 < K < N: 组相联"
     
-    Address ..> CacheSystem : Inputs to
+    地址 ..> Cache系统 : 输入到
 ```
 
 ### 结构拆解
-1.  **CacheSystem**：整体控制器。
-2.  **CacheSet (组)**：哈希桶。通过地址的 `Index` 字段定位到具体的组。
-3.  **CacheLine (行/块)**：最小存储单元。
-    *   **Valid**：这行数据是有效的吗？
-    *   **Dirty**：这行数据被修改过吗？（写回策略用）
-    *   **Tag**：这行数据属于主存的哪个位置？（身份ID）
-    *   **Data**：实际的数据内容（通常 64 字节）。
+1.  **Cache系统**：整体控制器。
+2.  **Cache组 (Set)**：哈希桶。通过地址的 `索引` 字段定位到具体的组。
+3.  **Cache行 (Line/Block)**：最小存储单元。
+    *   **有效位**：这行数据是有效的吗？
+    *   **脏位**：这行数据被修改过吗？（写回策略用）
+    *   **标记**：这行数据属于主存的哪个位置？（身份ID）
+    *   **数据**：实际的数据内容（通常 64 字节）。
 
 ---
 
 ## 二、映射方式：哈希策略的选择
 
-如何根据内存地址找到 Cache 中的位置？这取决于 `Index` 和 `Tag` 的划分。
+如何根据内存地址找到 Cache 中的位置？这取决于 `索引` 和 `标记` 的划分。
 
 ### 1. 直接映射 (Direct Mapped) —— K=1
 *   **规则**：每个内存块只能放在**唯一**的一个 Cache 行中。`Cache行号 = 内存块号 % Cache行数`。
@@ -70,12 +70,12 @@ classDiagram
 ### 2. 全相联 (Fully Associative) —— K=N
 *   **规则**：内存块可以放在 Cache 的**任意**位置。
 *   **优点**：冲突最少（只有 Cache 满了才会冲突）。
-*   **缺点**：**查找极慢**。必须并发比较所有行的 Tag（电路复杂，功耗大）。
+*   **缺点**：**查找极慢**。必须并发比较所有行的标记（电路复杂，功耗大）。
 
 ### 3. 组相联 (Set Associative) —— 1 < K < N (折中方案)
 *   **规则**：内存块可以放在特定**组**内的**任意**一行中。
-    *   先通过 `Index` 找到组。
-    *   再在组内的 K 行中查找 Tag。
+    *   先通过 `索引` 找到组。
+    *   再在组内的 K 行中查找标记。
 *   **主流选择**：现代 CPU 通常使用 **4路** 或 **8路** 组相联。
 
 ---
@@ -89,7 +89,7 @@ classDiagram
     *   **优点**：主存始终是最新的，一致性好。
     *   **缺点**：**慢**。写操作被主存速度拖累。
 2.  **写回 (Write Back)**：
-    *   **策略**：只修改 Cache，标记为 **Dirty**。只有当这行被**替换**出去时，才写回主存。
+    *   **策略**：只修改 Cache，标记为 **脏位**。只有当这行被**替换**出去时，才写回主存。
     *   **优点**：**快**。多次写合并为一次写。
     *   **缺点**：实现复杂，断电可能丢数据。
 
