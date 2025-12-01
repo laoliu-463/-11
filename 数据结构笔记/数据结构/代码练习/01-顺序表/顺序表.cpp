@@ -34,7 +34,7 @@ myarrylist finallist(myarrylist a,int b)
   return a;
 
  }
-void addlist(myarrylist a,int size)
+void addlist(myarrylist a,int size,int number)
 //在任意位置插入
 {  if (size<=0||size>MAXNUMBER)
 {
@@ -45,8 +45,8 @@ void addlist(myarrylist a,int size)
   if (a.number==MAXNUMBER) {
    printf("表满了");
   }
-  for (int j,j) {
-   data[j+1]=data[j];
+  for (int j=size-1;j>=1;j--) {
+   a.data[j+1]=a.data[j];
   }
 
 
