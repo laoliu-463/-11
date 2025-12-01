@@ -11,9 +11,12 @@
     int number;
 
 }myarrylist;
-initsqlist() {
+ myarrylist initlist() {
     myarrylist a;
     a.data=(int *)malloc(MAXNUMBER*sizeof(int));
+    if (a.data == NULL) {
+        printf("申请失败");
+    }
 }
 
 
