@@ -3,11 +3,11 @@
 //顺序表代码
 #include <cstdio>
 #define MAXNUMBER=100
-struct sqlist()
+typedef struct sqlist()
 {int data[];
     int number;
 
-}
+}arrlist;
 
 int main() {
 
