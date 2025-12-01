@@ -6,7 +6,7 @@
 #define MAXNUMBER 100
  typedef struct sqlist
 {int data[MAXNUMBER];
-    int *data1;
+
 
     int number;
 
@@ -18,5 +18,6 @@ initsqlist() {
 
 
 int main() {
-arry a;
+myarrylist a;
+
 }
