@@ -48,10 +48,15 @@ void addlist(myarrylist a,int size,int number)
   for (int j=size-1;j>=size;j--) {
    a.data[j+1]=a.data[j];
   }
-
+  a.data[size]=number;
+  a.number++;
+ }
+void findlist(myarrylist a,int b ) {
+  
+ }
+myarrylist deletelist(myarrylist a,int b) {
 
  }
-
 
 int main() {
 myarrylist a;
