@@ -51,10 +51,28 @@ void addlist(myarrylist a,int size,int number)
   a.data[size]=number;
   a.number++;
  }
-void findlist(myarrylist a,int b ) {
-  
+int findlist(myarrylist a,int b ) {
+  for (int i=0;i<a.number-1;i++) {
+   if (a.data[i]==b) {
+    return i;
+   }
+   return -1;
+  }
  }
-myarrylist deletelist(myarrylist a,int b) {
+myarrylist deletelist(myarrylist a,int b)
+{//删除时找到对应位置后对应数据继续后移
+  if (b>=a.number||b<=0) {
+   printf("删除位置不合法");
+  }
+  if (a.number==0) {
+   printf("空的");
+  }
+  int c=findlist(a,b);//通过查找操作找到删除位置
+  for (int j=c;j<=a.number-2;j++) {
+   a.data[j-1]=a.data[j];
+  }
+  a.number--;
+  return a;
 
  }
 
