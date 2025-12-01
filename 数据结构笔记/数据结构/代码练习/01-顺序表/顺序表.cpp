@@ -34,13 +34,21 @@ myarrylist finallist(myarrylist a,int b)
   return a;
 
  }
-void addlist(int size)
+void addlist(myarrylist a,int size)
 //在任意位置插入
-{  if (size<=0||size>MAXNUMBER) {
+{  if (size<=0||size>MAXNUMBER)
+{
  printf("插入位置不合法");
-
 }
-  
+  //数据向后移动
+  //必须倒着循环,否则后面数据都会变成一样的
+  if (a.number==MAXNUMBER) {
+   printf("表满了");
+  }
+  for (int j,j) {
+   data[j+1]=data[j];
+  }
+
 
  }
 
