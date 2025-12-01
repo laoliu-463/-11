@@ -5,9 +5,10 @@
 #include <cstdlib>
 #define MAXNUMBER 100
  typedef struct sqlist
-{int data[MAXNUMBER];
 
+{//int data[MAXNUMBER];
 
+int *data;//指针开动态数组
     int number;
 
 }myarrylist;
