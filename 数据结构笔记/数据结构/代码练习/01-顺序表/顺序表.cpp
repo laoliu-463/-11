@@ -45,7 +45,7 @@ void addlist(myarrylist a,int size,int number)
   if (a.number==MAXNUMBER) {
    printf("表满了");
   }
-  for (int j=size-1;j>=1;j--) {
+  for (int j=size-1;j>=size;j--) {
    a.data[j+1]=a.data[j];
   }
 
