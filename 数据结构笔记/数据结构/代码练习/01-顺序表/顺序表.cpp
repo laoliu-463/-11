@@ -22,6 +22,21 @@
      a.number=0;
      return a;
 }
+myarrylist finallist(myarrylist a,int b)
+{if (a.number=MAXNUMBER) {
+ printf("满了");
+
+
+}
+  a.data[a.number]=b;
+  a.number++;
+  return a;
+
+ }
+void addlist()
+{
+
+ }
 
 
 int main() {
