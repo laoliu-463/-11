@@ -2,7 +2,10 @@
 // Created by caojianing1 on 2025/12/1.
 //顺序表代码
 #include <cstdio>
-struct sqlist() {
+#define MAXNUMBER=100
+struct sqlist()
+{int data[];
+    int number;
 
 }
 
