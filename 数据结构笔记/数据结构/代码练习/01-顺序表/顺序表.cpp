@@ -95,9 +95,13 @@ void showlist(myarrylist a) {
  }
 
 int main() {
+  system("chcp 65001");
 myarrylist a;
   a=initlist();
   showlist(a);
+  addlist(a,0,1);
+  showlist(a);
+
 
 
 
