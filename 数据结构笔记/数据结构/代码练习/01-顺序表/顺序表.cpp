@@ -23,6 +23,7 @@
      return a;
 }
 myarrylist finallist(myarrylist a,int b)
+//在末尾插入
 {if (a.number=MAXNUMBER) {
  printf("满了");
 
@@ -33,8 +34,13 @@ myarrylist finallist(myarrylist a,int b)
   return a;
 
  }
-void addlist()
-{
+void addlist(int size)
+//在任意位置插入
+{  if (size<=0||size>MAXNUMBER) {
+ printf("插入位置不合法");
+
+}
+  
 
  }
 
