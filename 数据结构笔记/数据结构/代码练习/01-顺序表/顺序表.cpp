@@ -7,7 +7,6 @@
  typedef struct sqlist
 
 {int data[MAXNUMBER];
-
 //int *data;//指针开动态数组
     int number;
 
@@ -75,9 +74,30 @@ myarrylist deletelist(myarrylist a,int b)
   return a;
 
  }
+myarrylist changelist(myarrylist a,int b) {
+  int c=findlist(a,b);
+  if (c==-1) {
+   printf("没找到");
+
+  }
+  for (int j=0;j<=a.number-2;j++){
+   a.data[j]=c;
+  }
+  return a;
+ }
+void showlist(myarrylist a) {
+  if (a.number==0) {
+   printf("当前为空表");
+  }
+  for (int i=0;i<a.number;i++) {
+   printf("%d ",a.data[i]);
+  }
+ }
 
 int main() {
 myarrylist a;
+  showlist(a);
+
 
 
 }
