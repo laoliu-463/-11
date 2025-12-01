@@ -96,6 +96,7 @@ void showlist(myarrylist a) {
 
 int main() {
 myarrylist a;
+  a=initlist();
   showlist(a);
 
 
