@@ -106,3 +106,19 @@
 - claude，豆包  软件需求、拆分、设计
 - v0/bolt.new 把UI做出来（这部分代码可以导出）
 - cursor 进一步开发
+- 以下是图片中的文字内容：
+
+一些好用的 Prompt 共享网站
+
+- [https://promptbase.com/](https://promptbase.com/)
+    
+- [https://github.com/f/awesome-chatgpt-prompts](https://github.com/f/awesome-chatgpt-prompts)
+    
+- [https://smith.langchain.com/hub](https://smith.langchain.com/hub)
+    
+- [https://www.promptgenius.site/](https://www.promptgenius.site/)
+    
+
+OpenAI官方《提示词工程课》：[https://juejin.cn/post/7229891190900441125?searchId=202409251659082FE8C812BFDE718FC5B9](https://juejin.cn/post/7229891190900441125?searchId=202409251659082FE8C812BFDE718FC5B9)
+
+提示词工程指南-中文版：[https://github.com/PartnerDAO/Prompt-Engineering-Guide-zh?tab=readme-ov-file](https://github.com/PartnerDAO/Prompt-Engineering-Guide-zh?tab=readme-ov-file)
